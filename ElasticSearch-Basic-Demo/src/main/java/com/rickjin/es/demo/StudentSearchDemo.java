@@ -14,7 +14,7 @@ import java.net.InetAddress;
 /**
  * 学生搜索应用程序
  */
-public class StudentSearchApp {
+public class StudentSearchDemo {
 
     public static void main(String[] args) throws Exception {
         Settings settings = Settings.builder()
