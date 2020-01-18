@@ -3,6 +3,7 @@ package com.rickjin.es.demo;
 
 import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.index.IndexResponse;
+import org.elasticsearch.action.update.UpdateResponse;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
@@ -24,7 +25,9 @@ public class StudentDemo {
         // 创建一个学生信息
 //        createStudent(transportClient);
         // 获取学生信息
-        getStudent(transportClient);
+//        getStudent(transportClient);
+        // 更新学生信息
+        updateStudent(transportClient);
         transportClient.close();
     }
 
@@ -52,5 +55,20 @@ public class StudentDemo {
     private static void getStudent(TransportClient client) throws Exception {
         GetResponse response = client.prepareGet("school", "student", "1").get();
         System.out.println(response.getSourceAsString());
+    }
+
+    /**
+     * 修改员工信息
+     * @param client
+     * @throws Exception
+     */
+    private static void updateStudent(TransportClient client) throws Exception {
+        UpdateResponse response = client.prepareUpdate("school", "student", "1")
+                                                    .setDoc(XContentFactory.jsonBuilder()
+                                                    .startObject()
+                                                    .field("age", 34)
+                                                    .endObject())
+                                                    .get();
+        System.out.println(response.getResult());
     }
 }
