@@ -14,8 +14,10 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!-- 指定自动导入的依赖项的版本，目前平台的es版本为5.4.1，lucene版本为6.5.1 -->
         <java.version>1.8</java.version>
-        <elasticsearch.version>5.1.1</elasticsearch.version>
+        <lucene.version>6.5.1</lucene.version>
+        <elasticsearch.version>5.4.1</elasticsearch.version>
     </properties>
 
     <dependencies>
@@ -33,7 +35,7 @@
         <dependency>
             <groupId>org.elasticsearch.client</groupId>
             <artifactId>transport</artifactId>
-            <version>5.1.1</version>
+            <version>5.4.1</version>
         </dependency>
 
         <dependency>
