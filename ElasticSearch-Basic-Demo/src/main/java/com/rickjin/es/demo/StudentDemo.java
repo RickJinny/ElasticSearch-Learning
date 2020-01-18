@@ -26,11 +26,11 @@ public class StudentDemo {
         // 创建一个学生信息
 //        createStudent(transportClient);
         // 获取学生信息
-//        getStudent(transportClient);
+        getStudent(transportClient);
         // 更新学生信息
 //        updateStudent(transportClient);
         // 删除员工信息
-        deleteStudent(transportClient);
+//        deleteStudent(transportClient);
         transportClient.close();
     }
 
