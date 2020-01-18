@@ -1,6 +1,7 @@
 package com.rickjin.es.demo;
 
 
+import org.elasticsearch.action.delete.DeleteResponse;
 import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.action.update.UpdateResponse;
@@ -27,7 +28,9 @@ public class StudentDemo {
         // 获取学生信息
 //        getStudent(transportClient);
         // 更新学生信息
-        updateStudent(transportClient);
+//        updateStudent(transportClient);
+        // 删除员工信息
+        deleteStudent(transportClient);
         transportClient.close();
     }
 
@@ -69,6 +72,16 @@ public class StudentDemo {
                                                     .field("age", 34)
                                                     .endObject())
                                                     .get();
+        System.out.println(response.getResult());
+    }
+
+    /**
+     * 删除员工信息
+     * @param client
+     * @throws Exception
+     */
+    private static void deleteStudent(TransportClient client) throws Exception {
+        DeleteResponse response = client.prepareDelete("school", "student", "1").get();
         System.out.println(response.getResult());
     }
 }
